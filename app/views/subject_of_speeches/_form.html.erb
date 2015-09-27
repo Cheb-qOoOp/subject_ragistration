@@ -1,0 +1,78 @@
+<%= form_for(@subject_of_speech) do |f| %>
+  <% if @subject_of_speech.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subject_of_speech.errors.count, "error") %> prohibited this subject_of_speech from being saved:</h2>
+
+      <ul>
+      <% @subject_of_speech.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="base">
+  <div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div>
+    <h3>主題</h3>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <h3>副題</h3>
+    <%= f.text_field :sub_title %>
+  </div>
+
+  <!-- 共同演者は３名 -->
+  <div>
+    <h3>共同演者</h3>
+    <table class="table-css">
+      <tr>
+        <th>氏名</th><th>所属</th><th>職種</th>
+      </tr>
+      <% 3.times.each do |count| %>
+      <tr>
+        <td><%= text_field_tag 'costar[][name]' %></td>
+        <td><%= text_field_tag 'costar[][affiliation]' %></td>
+        <td><%= text_field_tag 'costar[][job_category]' %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+  <div>
+    <h3><label for="subject_of_speech_presentation_style">発表形式</label></h3>
+
+    <%= f.radio_button :presentation_style, "ポスター" %>
+    <%= f.label :presentation_style, "ポスター", value: "ポスター" %><br>
+    <%= f.radio_button :presentation_style, "口述" %>
+    <%= f.label :presentation_style, "口述", value: "口述" %><br>
+  </div>
+
+  <div>
+    <h3><label for="subject_of_speech_category">分類</label></h3>
+    <%= f.radio_button :category, "category 01" %>
+    <%= f.label :category, "category 01", value: "category 01" %><br>
+    <%= f.radio_button :category, "category 02" %>
+    <%= f.label :category, "category 02", value: "category 02" %><br>
+  </div>
+
+  <div>
+    <h3>内容</h3>
+    <%= f.text_area :content %>
+  </div>
+
+  <div>
+    <h3>キーワード</h3>
+    <%= f.text_field :keywords %><br>
+    <%= link_to '作業療法キーワード集（2014年12月改訂）', 'http://www.jaot.or.jp/science/keyword.html', target: "_blank" %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <p><%= f.submit %></p>
+  </div>
+</div>
+<% end %>

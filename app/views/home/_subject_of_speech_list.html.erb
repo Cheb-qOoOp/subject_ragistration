@@ -1,0 +1,35 @@
+<div class="base">
+<table class="table-css">
+  <thead>
+    <tr>
+      <th class="td-basic" width="20px" align="center">#</th>
+      <th class="td-basic" width="100px" align="center">Title</th>
+      <th class="td-basic" width="200px" align="center">Sub Title</th>
+
+      <!-- adminユーザの場合は出力 -->
+      <th class="td-basic"  align="center">User</th>
+
+      <th class="right-edge" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.subject_of_speeches.each_with_index do |subject_of_speech, i| %>
+      <tr>
+        <td class="td-basic"><%= i %></td>
+        <td class="td-basic"><%= subject_of_speech.title %></td>
+        <td class="td-basic"><%= subject_of_speech.sub_title %></td>
+        <td class="td-basic"><%= User.find(subject_of_speech.user_id).name %></td>
+        <td width="50px"><%= link_to 'Show', subject_of_speech %></td>
+        <td width="50px"><%= link_to 'Edit', edit_subject_of_speech_path(subject_of_speech) %></td>
+        <td width="50px"><%= link_to 'Destroy', subject_of_speech, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+<p>
+  <%= link_to "New Subject of speech", new_subject_of_speech_path, :class => "navbar-link" %>
+</p>

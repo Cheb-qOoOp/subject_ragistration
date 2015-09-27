@@ -1,0 +1,35 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.home {
+  /*
+   * 隣接する線を重ねて表示
+   */
+  .table-css {
+
+      border-collapse: collapse;
+
+      /*
+       * 上部と左側の線のみ非表示。下部と右側は残っている
+       * （未使用）
+       */
+      .sample {
+        border: 1px solid black;
+        border-top-style:none;
+        border-left-style:none;
+      }
+
+      .td-basic {
+        /*
+         * すべての線を表示
+         */
+        border: 1px solid black;
+      }
+
+      /*
+       * 上下左右すべての線を非表示
+       */
+      .td-right-edge { border-style:none; }
+
+  }
+}

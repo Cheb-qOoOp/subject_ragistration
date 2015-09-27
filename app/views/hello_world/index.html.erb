@@ -1,0 +1,39 @@
+<h1>Greeting</h1>
+
+<script type="text/javascript">
+<!--
+$('#result').html("<%= @greeting %>");
+function jikoku() {
+    dd = new Date();
+    document.F1.T1.value = dd.toLocaleString();
+    window.setTimeout("jikoku()", 1000);
+}
+jQuery( function($) {
+    $('tbody tr[data-href]').addClass('clickable').click( function() {
+        window.location = $(this).attr('data-href');
+    }).find('a').hover( function() {
+        $(this).parents('tr').unbind('click');
+    }, function() {
+        $(this).parents('tr').click( function() {
+            window.location = $(this).attr('data-href');
+        });
+    });
+});
+// -->
+</script>
+
+<form name="F1" action="#">
+<input type="text" name="T1" size=50>
+</form>
+
+<table>
+    <tbody>
+        <tr data-href="http://www.webantena.net/">
+            <th>項目1</th>
+            <th>項目2</th>
+            <th>項目3</th>
+            <th>項目4</th>
+        </tr>
+    </tbody>
+</table>
+

@@ -1,0 +1,42 @@
+<table class="base.table.css">
+
+  <tr>
+    <th>演者</th>
+    <td><%= User.find(@subject_of_speech.user_id).name %></td>
+  </tr>
+
+  <tr>
+    <th>共同演者</th>
+    <td>
+      <table border="1">
+        <tr>
+          <th>氏名</th><th>所属</th><th>職種</th>
+        </tr>
+
+        <% @costars.each do |costar| %>
+          <tr>
+            <td><%= costar["name"] %></td>
+            <td><%= costar["affiliation"] %></td>
+            <td><%= costar["job_category"] %></td>
+          </tr>
+        <% end %>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <th>発表形式</th>
+    <td><%= @subject_of_speech.presentation_style %></td>
+  </tr>
+
+  <tr>
+    <th>発表区分</th>
+    <td><%= @subject_of_speech.category %></td>
+  </tr>
+
+  <tr>
+    <th>キーワード</th>
+    <td><%= @subject_of_speech.keywords %></td>
+  </tr>
+
+</table>

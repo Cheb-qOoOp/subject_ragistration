@@ -1,0 +1,61 @@
+
+<p hidden align="center">
+  <strong><u>User ID</u></strong>
+  <br>
+  <%= @subject_of_speech.user_id %>
+</p>
+<p align="center">
+  <strong><u>演者</u></strong>
+  <br>
+  <%= User.find(@subject_of_speech.user_id).name %>
+</p>
+
+<p align="center">
+  <strong><u>共同演者</u></strong>
+  <br>
+  <table border="1" align="center" width="90%">
+    <tr>
+      <th width="30%">氏名</th><th width="30%">所属</th><th width="40%">職種</th>
+    </tr>
+
+    <% @costars.each do |costar| %>
+      <tr>
+        <td><%= costar["name"] %></td>
+        <td><%= costar["affiliation"] %></td>
+        <td><%= costar["job_category"] %></td>
+      </tr>
+    <% end %>
+  </table>
+</p>
+
+<p align="center">
+  <strong><u>発表形式</u></strong>
+  <br>
+  <%= @subject_of_speech.presentation_style %>
+</p>
+
+<p align="center">
+  <strong><u>発表区分</u></strong>
+  <br>
+  <%= @subject_of_speech.category %>
+</p>
+
+<p align="center">
+  <strong><u>キーワード</u></strong>
+  <br>
+  <%= @subject_of_speech.keywords %>
+<!--
+  <p>
+    <%# @keywords.each do |keyword| %>
+      <%#= keyword %><br />
+    <%# end %>
+  </p>
+-->
+</p>
+
+<p align="center">
+  <strong><u>内容</u></strong>
+  <br>
+  <%= @subject_of_speech.content %>
+</p>
+

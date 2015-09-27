@@ -1,0 +1,16 @@
+<div class="base">
+
+    <% @subject_of_speech.comments.each do |comment| %>
+      <div>
+        <%= User.find(comment.user_id).name %> | <%= comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+      </div>
+      <div>
+        <p>
+          <%= simple_format(comment.comment) %>
+        </p>
+      </div>
+      <hr>
+    <% end %>
+  </tbody>
+</table>
+</div>

@@ -1,0 +1,29 @@
+<h1>Listing subject_of_speeches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>User</th>
+      <th>Content</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subject_of_speeches.each do |subject_of_speech| %>
+      <tr>
+        <td><%= subject_of_speech.title %></td>
+        <td><%= subject_of_speech.user_id %></td>
+        <td><%= subject_of_speech.content %></td>
+        <td><%= link_to 'Show', subject_of_speech %></td>
+        <td><%= link_to 'Edit', edit_subject_of_speech_path(subject_of_speech) %></td>
+        <td><%= link_to 'Destroy', subject_of_speech, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Subject of speech', new_subject_of_speech_path %>

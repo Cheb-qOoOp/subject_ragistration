@@ -1,0 +1,83 @@
+<div class="base">
+<table class="table-css">
+  <hr>
+  <thead>
+    <tr>
+      <th class="td-basic">Comment</th>
+      <th class="td-basic">Parent</th>
+      <th class="td-basic">Subject</th>
+      <th class="td-basic">User</th>
+      <th  class="td-right-edge" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subject_of_speech.comments.each do |comment| %>
+      <tr>
+        <td class="td-basic"><%= comment.comment %></td>
+        <td class="td-basic"><%= comment.parent_id %></td>
+        <td class="td-basic"><%= comment.subject_id %></td>
+        <td class="td-basic"><%= comment.user_id %></td>
+        <td><%= link_to 'Show', comment %></td>
+        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Comment', new_comment_path %>
+
+<style>
+<!--
+.jquery-ui-dialog-alert {
+    border-color: red;
+    background-color: pink;
+}
+.jquery-ui-dialog-alert div.ui-dialog-titlebar {
+    border-color: red;
+}
+-->
+</style>
+
+<script type="text/javascript">
+<!--
+$(function() {
+  $("#dialog").dialog({
+    modal: true,
+    buttons: {
+      "OK": function() {
+        $(this).dialog('close');
+      },
+      close: function() {
+        $(this).dialog('close');
+      }
+    }
+  });
+});
+jQuery( function() {
+    jQuery( '#jquery-ui-dialog' ) . dialog( {
+        modal: true,
+        autoOpen: false,
+        dialogClass: 'jquery-ui-dialog-alert',
+    } );
+    jQuery( '#jquery-ui-dialog-opener' ) . click( function() {
+        modal: true,
+        jQuery( '#jquery-ui-dialog' ) . dialog( 'open' );
+        return false;
+    } );
+} );
+-->
+</script>
+
+<div id="dialog"  style="background-color:#ff9933;" title="コメント投稿">
+  <%= render template: "comments/_form.html.erb" %>
+</div>
+
+<div id="jquery-ui-dialog" title="ダイアログ">
+    <p><font style="color: red;">「jquery-ui-dialog-alert」というクラスを追加した。</font>「×」アイコンをクリックすると閉じる。ドラッグ移動できる。サイズを変更できる。</p>
+</div>
+<button id="jquery-ui-dialog-opener">ダイアログを開く</button>

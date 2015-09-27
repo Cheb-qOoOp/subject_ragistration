@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<div class="base">
+
+  <p class="title">
+    <strong><%= @subject_of_speech.title %></strong>
+  </p>
+
+  <% if @subject_of_speech.sub_title.present? %>
+    <p class="sub_title">
+      <%= @subject_of_speech.sub_title %>
+    </p>
+  <% end %>
+
+  <%= render "show_center" %>
+
+</div>
+
+<%= link_to 'Edit', edit_subject_of_speech_path(@subject_of_speech) %> |
+<%= link_to 'Back', home_index_path %>
+
+<hr>
+<%= link_to 'New Comment', new_comment_path %>
+<% if @subject_of_speech.comments.any? %>
+  <%= render "comments" %>
+<% end %>
