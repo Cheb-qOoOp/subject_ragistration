@@ -32,7 +32,7 @@ class SubjectOfSpeechesController < ApplicationController
   # POST /subject_of_speeches.json
   def create
     @subject_of_speech = SubjectOfSpeech.new(subject_of_speech_params)
-    # binding.pry
+    binding.pry
     @subject_of_speech.costar = params["costar"].to_s
 
     respond_to do |format|

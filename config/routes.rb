@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+  }
   resources :subject_of_speeches
 
   get 'home/index'
