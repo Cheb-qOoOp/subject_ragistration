@@ -6,6 +6,9 @@ class SubjectOfSpeechesController < ApplicationController
   def index
     if current_user.admin?
       redirect_to rails_admin_url
+    elsif current_user.reviewer?
+      @q = SubjectOfSpeech.search(params[:q])
+      @subject_of_speeches = @q.result(distinct: true)
     else
       # 自分で投稿した内容のみ表示する。
       # @subject_of_speeches = SubjectOfSpeech.all
@@ -20,8 +23,13 @@ class SubjectOfSpeechesController < ApplicationController
   # GET /subject_of_speeches/1
   # GET /subject_of_speeches/1.json
   def show
-    # 自分で投稿した内容のみ表示する。
-    @subject_of_speech = current_user.subject_of_speeches.find(params[:id])
+    if current_user.member?
+      # 自分で投稿した内容のみ表示する。
+      @subject_of_speech = current_user.subject_of_speeches.find(params[:id])
+    else
+      @subject_of_speech = SubjectOfSpeech.find(params[:id])
+    end
+
     @keywords = @subject_of_speech.keywords.split(",")
     # binding.pry
     @costars = eval(@subject_of_speech.costar)
