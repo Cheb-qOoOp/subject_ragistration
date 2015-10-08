@@ -13,7 +13,7 @@
   <%#= f.search_field :name_or_description_cont %>
 
   <%# 検索ボタン %>
-  <%= f.submit %>
+  <%= f.submit '検索' %>
 <% end %>
 
 <hr />
@@ -22,23 +22,23 @@
   <thead>
     <tr>
       <th class="td-basic" width="20px" align="center">#</th>
-      <th class="td-basic" width="100px" align="center">Title</th>
-      <th class="td-basic" width="200px" align="center">Sub Title</th>
+      <th class="td-basic" width="100px" align="center">タイトル</th>
+      <th class="td-basic" width="200px" align="center">サブタイトル</th>
 
       <!-- adminユーザの場合は出力 -->
-      <th class="td-basic"  align="center">User</th>
+      <th class="td-basic"  align="center">演者</th>
 
       <th class="right-edge" colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% current_user.subject_of_speeches.each.with_index(1) do |subject_of_speech, i| %>
+    <% @subject_of_speeches.each.with_index(1) do |subject_of_speech, i| %>
       <tr>
         <td class="td-basic"><%= i %></td>
         <td class="td-basic"><%= subject_of_speech.title %></td>
         <td class="td-basic"><%= subject_of_speech.sub_title %></td>
-        <td class="td-basic"><%= User.find(subject_of_speech.user_id).name %></td>
+        <td class="td-basic"><%= subject_of_speech.user.name %></td>
         <td width="50px"><%= link_to 'Show', subject_of_speech %></td>
         <td width="50px"><%= link_to 'Edit', edit_subject_of_speech_path(subject_of_speech) %></td>
         <td width="50px"><%= link_to 'Destroy', subject_of_speech, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -49,6 +49,3 @@
 </div>
 
 <br>
-<p>
-  <%= link_to "New Subject of speech", new_subject_of_speech_path, :class => "navbar-link" %>
-</p>

@@ -10,11 +10,10 @@ class User < ActiveRecord::Base
          :validatable
 
   # validates :username, presence: true, length: { maximum: 50 }
-  ROLE = {admin: "admin",
-          reviewer: "reviewer",
-          member: "member"}
+  enum role: {admin: 0, reviewer: 1, member: 2}
 
-  has_many :subject_of_speeches
+  belongs_to :roles
+  has_many :subject_of_speeches, dependent: :destroy
 
   validates :email, presence: true
 

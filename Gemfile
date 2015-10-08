@@ -63,8 +63,11 @@ end
 
 gem 'devise'
 gem 'cancancan'
+gem 'rails_admin'
 
 #gem 'therubyracer' # javascript runtime。lessをコンパイルするために必要
 #gem 'less-rails' # Railsでlessを使えるようにする。Bootstrapがlessで書かれているため
 gem 'bootstrap-sass' # Bootstrapの本体
 gem 'autoprefixer-rails' # 自動でベンダープレフィックスを追加
+
+gem 'ransack'

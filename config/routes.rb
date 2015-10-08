@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'hello_world/index'
   post "hello_world/index"
 
@@ -16,7 +17,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root 'home#index'
+  # root 'home#index'
+  root 'subject_of_speeches#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

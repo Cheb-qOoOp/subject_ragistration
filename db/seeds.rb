@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+user = User.new(:email => 'admin@test.com', :password => 'adminadmin', :name => '管理者', :name_kana => 'かんりしゃ', :affiliation => '管理者病院', :tel => '029-123-4567', :fax => '029-123-4567', confirmation_token: 'KBownyazNbmUSxwfjwEQ', confirmed_at: '2015-08-18 08:52:03', confirmation_sent_at: '2015-08-18 08:51:18', :role => 0)
+user.save!
+
+user = User.new(:email => 'reviewer@test.com', :password => 'reviewreview', :name => '査閲者', :name_kana => 'さえつしゃ', :affiliation => '査閲者病院', :tel => '029-123-4567', :fax => '029-123-4567', confirmation_token: 'KBownyazNbmUSxwfjwEQ', confirmed_at: '2015-08-18 08:52:03', confirmation_sent_at: '2015-08-18 08:51:18', :role => 1)
+user.save!
+
 user = User.new(:email => 'test1@test.com', :password => 'testtest', :name => 'テスト太郎', :name_kana => 'てすとたろう', :affiliation => 'てすと病院', :tel => '029-123-4567', :fax => '029-123-4567', confirmation_token: 'KBownyazNbmUSxwfjwEQ', confirmed_at: '2015-08-18 08:52:03', confirmation_sent_at: '2015-08-18 08:51:18')
 user.save!
 

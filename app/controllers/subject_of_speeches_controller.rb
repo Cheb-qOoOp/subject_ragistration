@@ -4,9 +4,17 @@ class SubjectOfSpeechesController < ApplicationController
   # GET /subject_of_speeches
   # GET /subject_of_speeches.json
   def index
-    # 自分で投稿した内容のみ表示する。
-    # @subject_of_speeches = SubjectOfSpeech.all
-    @subject_of_speeches = current_user.subject_of_speeches.all
+    if current_user.admin?
+      redirect_to rails_admin_url
+    else
+      # 自分で投稿した内容のみ表示する。
+      # @subject_of_speeches = SubjectOfSpeech.all
+      # @subject_of_speeches = current_user.subject_of_speeches.all
+      @q        = current_user.subject_of_speeches.search(params[:q])
+      # @q = SubjectOfSpeech.search(params[:q])
+      @subject_of_speeches = @q.result(distinct: true)
+      # binding.pry
+    end
   end
 
   # GET /subject_of_speeches/1
@@ -32,7 +40,7 @@ class SubjectOfSpeechesController < ApplicationController
   # POST /subject_of_speeches.json
   def create
     @subject_of_speech = SubjectOfSpeech.new(subject_of_speech_params)
-    binding.pry
+    # binding.pry
     @subject_of_speech.costar = params["costar"].to_s
 
     respond_to do |format|
