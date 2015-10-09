@@ -32,11 +32,12 @@
       <tr>
         <th>氏名</th><th>所属</th><th>職種</th>
       </tr>
+      <% @costars = eval(@subject_of_speech.costar) %>
       <% 3.times.each do |count| %>
       <tr>
-        <td><%= text_field_tag 'costar[][name]' %></td>
-        <td><%= text_field_tag 'costar[][affiliation]' %></td>
-        <td><%= text_field_tag 'costar[][job_category]' %></td>
+        <td><%= text_field_tag 'costar[][name]', @costars[count]["name"] %></td>
+        <td><%= text_field_tag 'costar[][affiliation]', @costars[count]["affiliation"] %></td>
+        <td><%= text_field_tag 'costar[][job_category]', @costars[count]["job_category"] %></td>
       </tr>
       <% end %>
     </table>
