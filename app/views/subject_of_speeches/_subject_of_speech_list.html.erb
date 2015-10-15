@@ -8,6 +8,10 @@
   <%= f.search_field :title_cont %>
   <br />
 
+  <%= f.label :category, "発表区分" %>
+  <%= f.select :category_id_eq, Category.all.map{|cat| [cat.value, cat.id]} %>
+  <br />
+
   <%# or で複数の値をorで検索（and 複数の値をand条件で検索） %>
   <%#= f.label :name_or_description_cont, "名前 or 説明" %>
   <%#= f.search_field :name_or_description_cont %>
