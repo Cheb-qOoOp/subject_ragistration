@@ -81,7 +81,7 @@ class SubjectOfSpeechesController < ApplicationController
   def destroy
     @subject_of_speech.destroy
     respond_to do |format|
-      format.html { redirect_to home_index_url, notice: 'Subject of speech was successfully destroyed.' }
+      format.html { redirect_to subject_of_speeches_url, notice: 'Subject of speech was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -94,6 +94,6 @@ class SubjectOfSpeechesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_of_speech_params
-      params.require(:subject_of_speech).permit(:title, :sub_title, :user_id, :costar, :presentation_style, :category, :content, :keywords)
+      params.require(:subject_of_speech).permit(:title, :sub_title, :user_id, :costar, :presentation_style, :category, :content, :keywords, :category_id)
     end
 end

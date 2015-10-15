@@ -54,10 +54,7 @@
 
   <div>
     <h3><label for="subject_of_speech_category">分類</label></h3>
-    <%= f.radio_button :category, "category 01" %>
-    <%= f.label :category, "category 01", value: "category 01" %><br>
-    <%= f.radio_button :category, "category 02" %>
-    <%= f.label :category, "category 02", value: "category 02" %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :value %>
   </div>
 
   <div>

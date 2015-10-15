@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :comments
 
   devise_for :users, :controllers => {
+    :sessions => 'users/sessions',
     :registrations => 'users/registrations'
+
   }
   resources :subject_of_speeches
 

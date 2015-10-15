@@ -17,6 +17,7 @@
 </div>
 
 <%= link_to 'Edit', edit_subject_of_speech_path(@subject_of_speech) %> |
+<%= link_to 'Destroy', @subject_of_speech, method: :delete, data: { confirm: 'Are(subject_of_speech) you sure?' } %> |
 <%= link_to 'Back', subject_of_speeches_path %>
 
 <hr>

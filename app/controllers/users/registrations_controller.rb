@@ -3,9 +3,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    ## TODO role_idの比較を 2 ではなく、"member"としたい
+    if User.where(:role => 2).count >= Role.where(:name => :member).first.max_user_num
+      redirect_to new_user_session_path, :flash => {:alert => "Couldn't add new user."}
+    else
+      super
+    end
+  end
 
   # POST /resource
   # def create

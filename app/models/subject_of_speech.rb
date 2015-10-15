@@ -4,4 +4,5 @@ class SubjectOfSpeech < ActiveRecord::Base
 
   # 演題を削除したら、紐づいていた指摘事項をすべて削除する
   has_many :comments, dependent: :destroy, :foreign_key => "subject_id"
+  belongs_to :category
 end

@@ -2,7 +2,7 @@ class AddColumnsToSubjectOfSpeeches < ActiveRecord::Migration
   def change
     add_column :subject_of_speeches, :sub_title, :string, null: false, default: ""
     add_column :subject_of_speeches, :costar, :text, null: false, default: ""
-    add_column :subject_of_speeches, :category, :string, null: false, default: ""
+    add_column :subject_of_speeches, :category_id, :integer, default: 0
     add_column :subject_of_speeches, :keywords, :string, null: false, default: ""
     add_column :subject_of_speeches, :presentation_style, :string, null: false, default: ""
     add_column :subject_of_speeches, :status, :string, null: false, default: ""
